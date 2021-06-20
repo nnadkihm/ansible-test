@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: true
+  become_method: sudo
+  gather_facts: true
+  tasks:
+          # create a new file on each host
+          - copy: 
+                  content: "This is a test!" 
+                  dest: "/home/ThisIsATest"
