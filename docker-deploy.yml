@@ -1,0 +1,22 @@
+---
+  - hosts: all
+    become: true
+    become_method: sudo
+    gather_facts: True
+
+    vars:
+      os_codename: focal
+      ansible_python_interpreter: /usr/bin/python3
+      #dockercompose_file: /root/docker-compose.yml
+      dockercompose_file: ./docker-compose.yml
+      dockercompose_static: "{{ playbook_dir }}/docker-compose.yml"
+      ihm_file_content: "{{ lookup('file', '/etc/ihm.json') | from_json }}"
+
+  - tasks:
+      - name: File exists
+        stat:
+          path: "{{ dockercompose_static }}"
+        register: dockercompose_static_stat_result
+        
+      - debug: msg="Docker compose static exists - {{ dockercompose_static_stat_result.stat.exists }}"
+      
