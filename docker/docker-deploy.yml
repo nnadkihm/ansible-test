@@ -12,7 +12,7 @@
       dockercompose_static: "{{ playbook_dir }}/docker-compose.yml"
       ihm_file_content: "{{ lookup('file', '/etc/ihm.json') | from_json }}"
 
-  - tasks:
+    tasks:
       - name: File exists
         stat:
           path: "{{ dockercompose_static }}"
