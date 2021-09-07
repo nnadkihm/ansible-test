@@ -7,4 +7,4 @@
           # create a new file on each host
           - copy: 
                   content: "This is a test!" 
-                  dest: "/home/ThisIsATest"
+                  dest: "/home/test/ThisIsATest"
